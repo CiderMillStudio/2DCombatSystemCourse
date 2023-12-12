@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor
   - Water
   - UI
-  - 
-  - 
+  - Path
+  - Player
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor Tiles
+    uniqueID: 3448634505
+    locked: 0
+  - name: Path Tiles
+    uniqueID: 789048975
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
