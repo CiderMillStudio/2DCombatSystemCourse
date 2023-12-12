@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tree
+  - Bush
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - UI
   - Path
   - Player
-  - 
-  - 
+  - Trees
+  - Bush
   - 
   - 
   - 
@@ -46,4 +48,13 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bushes
+    uniqueID: 842594883
+    locked: 0
+  - name: Player
+    uniqueID: 3055959179
+    locked: 0
+  - name: Trees
+    uniqueID: 709383255
     locked: 0
