@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
 
     Vector2 moveInput;
+
+    SpriteRenderer playerSpriteRenderer;
     [SerializeField] float playerMoveSpeed = 1f;
 
     void Awake()
     {
-        myRigidbody = FindObjectOfType<Rigidbody2D>();
-        myAnimator = FindObjectOfType<Animator>();
+        myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     
@@ -30,6 +33,23 @@ public class PlayerMovement : MonoBehaviour
             moveInput = value.Get<Vector2>() * playerMoveSpeed;
             myRigidbody.velocity = new Vector2 (moveInput.x, moveInput.y);
             Debug.Log(moveInput);
+        if (myRigidbody.velocity.x > Mathf.Epsilon)
+        {
+            playerSpriteRenderer.transform.localScale = new Vector3 (1,1,1);
+        }
+        else if (myRigidbody.velocity.x < -Mathf.Epsilon)
+        {
+            playerSpriteRenderer.transform.localScale = new Vector3 (-1,1,1);
+        }
+
+        if (Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon || Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon)
+        {
+            myAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            myAnimator.SetBool("isRunning", false);
+        }
     }
 
 }
