@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     void PlayerInput()
     {
         moveInput = playerControls.Movement.Move.ReadValue<Vector2>();
+        
+        myAnimator.SetFloat("moveAlongX", moveInput.x);
+        myAnimator.SetFloat("moveAlongY", moveInput.y);
     }
 
     void FixedUpdate() //Fixed update is good for physics, while update is good for player input
@@ -56,15 +59,6 @@ public class PlayerController : MonoBehaviour
         else if (moveTarget.x < -Mathf.Epsilon)
         {
             playerSpriteRenderer.transform.localScale = new Vector3 (-1,1,1);
-        }
-
-        if (Mathf.Abs(moveTarget.x) > Mathf.Epsilon || Mathf.Abs(moveTarget.y) > Mathf.Epsilon)
-        {
-            myAnimator.SetBool("isRunning", true);
-        }
-        else
-        {
-            myAnimator.SetBool("isRunning", false);
         }
     }
 
