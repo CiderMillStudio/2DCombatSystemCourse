@@ -55,9 +55,6 @@ public class PlayerController : MonoBehaviour
         Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         
-
-
-        
         if (mouseWorldPosition.x > transform.position.x)
         {
             playerSpriteRenderer.flipX = false;

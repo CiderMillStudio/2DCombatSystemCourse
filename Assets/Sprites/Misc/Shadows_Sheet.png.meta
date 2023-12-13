@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 66a527bc51eef3f44a665a1f3883e10b
+guid: 12d0aa323816a35409f43fc343eb3d58
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hero_Idle_0
+      name: Shadows_Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5090059, y: 0.48986816}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 950f4def9710f664893e0b24b2f6a7a9
-      internalID: -2083349521
+      spriteID: 5d5a0367dec2a01468736e7cce7a2cf8
+      internalID: -1112448146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Idle_1
+      name: Shadows_Sheet_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 16
         y: 0
-        width: 96
-        height: 64
-      alignment: 9
-      pivot: {x: 0.50450295, y: 0.50675434}
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 388cc0c7811d386478038fae3edcbf38
-      internalID: 1251947079
+      spriteID: 726cf3bf79ed703479ccfa7c7a3590d6
+      internalID: -39686840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadows_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3070994f397504aa877ef4a93c4b82
+      internalID: -285846752
       vertices: []
       indices: 
       edges: []
@@ -175,8 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hero_Idle_0: -2083349521
-      Hero_Idle_1: 1251947079
+      Shadows_Sheet_0: -1112448146
+      Shadows_Sheet_1: -39686840
+      Shadows_Sheet_2: -285846752
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
