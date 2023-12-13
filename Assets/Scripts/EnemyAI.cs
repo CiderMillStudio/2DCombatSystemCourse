@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -12,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     private State state;
     private EnemyPathfinding enemyPathfinding;
 
-    [HideInInspector] public Vector2 enemyRoamingPosition;
+    Vector2 enemyRoamingPosition;
 
     private void Awake()
     {
@@ -23,6 +24,11 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         StartCoroutine(RoamingRoutine());
+    }
+
+    private void FixedUpdate() 
+    {
+        enemyPathfinding.MoveTo(enemyRoamingPosition);
     }
 
     //We need a coroutine to fire every few seconds to determine the random

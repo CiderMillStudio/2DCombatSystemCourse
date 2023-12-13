@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyPathfinding : MonoBehaviour
 {
-    EnemyAI enemyAI;
     Rigidbody2D myRigidbody;
     SpriteRenderer spriteRenderer;
     [SerializeField] float enemyMoveSpeed = 1f;
@@ -13,18 +12,14 @@ public class EnemyPathfinding : MonoBehaviour
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        enemyAI = GetComponent<EnemyAI>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void FixedUpdate()
-    {
-        Move();
-    }
 
-    void Move()
+
+    public void MoveTo(Vector2 vector2)
     {  
-        moveTarget = new (enemyAI.enemyRoamingPosition.x, enemyAI.enemyRoamingPosition.y);
+        moveTarget = vector2;
         Vector2 currentPosition = new (gameObject.transform.position.x, gameObject.transform.position.y);
         Vector2 movePositionVector = currentPosition + moveTarget * 
         enemyMoveSpeed * Time.fixedDeltaTime;
