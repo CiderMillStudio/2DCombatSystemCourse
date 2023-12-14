@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     Animator myAnimator;
 
     Vector2 moveInput;
-    PlayerControls playerControls;
+    PlayerControls playerControls; //this refers to the script that automaticaly comes with player input map
 
     SpriteRenderer playerSpriteRenderer;
     [SerializeField] float playerMoveSpeed = 1f;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-     void OnEnable() 
+     void OnEnable() //you need this for the new input system
     {
         playerControls.Enable();
     }

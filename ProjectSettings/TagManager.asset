@@ -46,6 +46,9 @@ TagManager:
   - name: Path Tiles
     uniqueID: 789048975
     locked: 0
+  - name: Shadows
+    uniqueID: 3187689087
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
