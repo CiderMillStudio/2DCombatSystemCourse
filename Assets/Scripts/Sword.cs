@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Sword : MonoBehaviour
 {
+    [SerializeField] GameObject slashAnimPrefab;
+    [SerializeField] Transform slashAnimSpawnPoint;
     [SerializeField] Transform weaponCollider;
     PlayerControls playerControls;
     Animator myAnimator; 
     SpriteRenderer mySpriteRenderer;
     ActiveWeapon activeWeapon;
     PlayerController playerController;
+
+    GameObject slashAnim;
 
     
     void Awake()
@@ -41,8 +46,27 @@ public class Sword : MonoBehaviour
     {
         myAnimator.SetTrigger("Attack");
         weaponCollider.gameObject.SetActive(true);
+        slashAnim = Instantiate(slashAnimPrefab,slashAnimSpawnPoint.position, Quaternion.identity);
+        slashAnim.transform.parent = this.transform.parent;
     }
 
+    public void SwingUpFlipAnim()
+    {
+        slashAnim.gameObject.transform.rotation = Quaternion.Euler(180,0,0);
+        if (playerController.FacingLeft)
+        {
+            slashAnim.GetComponent<SpriteRenderer>().flipX = true;
+        }
+    }
+
+    public void SwingDownAnim()
+    {
+        slashAnim.gameObject.transform.rotation = Quaternion.Euler(0,0,0);
+        if(playerController.FacingLeft)
+        {
+            slashAnim.GetComponent<SpriteRenderer>().flipX = true;
+        }
+    }
     public void DoneAttackingAnimEvent()
     {
         weaponCollider.gameObject.SetActive(false);
