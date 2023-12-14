@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyHealth : MonoBehaviour
+{
+[SerializeField] int startingHealth = 3;
+
+int currentHealth;
+
+
+void Start()
+{
+    currentHealth = startingHealth;
+}
+public void TakeDamage(int damage)
+{
+    currentHealth -= damage;
+    DetectDeath();
+}
+
+
+void DetectDeath()
+{
+    if (currentHealth <= 0)
+    {
+        Destroy(gameObject);
+    }
+}
+}
