@@ -13,6 +13,10 @@ public class Sword : MonoBehaviour
     ActiveWeapon activeWeapon;
     PlayerController playerController;
 
+    [SerializeField] GameObject slashEffect;
+    [SerializeField] float timeBetweenSwordAndSlashEffect = 0.2f;
+    [SerializeField] float timeToDelayBeforeFlippingXSlashEffect = 0.2f;
+
     
     void Awake()
     {
@@ -41,6 +45,18 @@ public class Sword : MonoBehaviour
     {
         myAnimator.SetTrigger("Attack");
         weaponCollider.gameObject.SetActive(true);
+        Invoke("TriggerASlashEffect",timeBetweenSwordAndSlashEffect);      
+    }
+
+    void TriggerASlashEffect()
+    {
+        slashEffect.GetComponent<SlashEffect>().TriggerSlash();
+        Invoke("DelayForFlipXSlash", timeToDelayBeforeFlippingXSlashEffect);
+    }
+
+    void DelayForFlipXSlash()
+    {
+        slashEffect.GetComponent<SlashEffect>().FlipSwordSlashEffect();
     }
 
     public void DoneAttackingAnimEvent()
@@ -59,11 +75,28 @@ public class Sword : MonoBehaviour
         {
             activeWeapon.transform.rotation = Quaternion.Euler(0,0,swordAngle);
             weaponCollider.rotation = Quaternion.Euler(0,0,swordAngle);
+            if (slashEffect.GetComponent<SlashEffect>().GetIsSlashFlippedX())
+            {
+                slashEffect.transform.rotation = Quaternion.Euler(-180,0, swordAngle);
+            }
+            else
+            {
+                slashEffect.transform.rotation = Quaternion.Euler(0,0, swordAngle);
+            }
         }
         else 
         {
             activeWeapon.transform.rotation = Quaternion.Euler(0,-180,swordAngle);
             weaponCollider.rotation = Quaternion.Euler(0,-180,swordAngle);
+            
+            if (slashEffect.GetComponent<SlashEffect>().GetIsSlashFlippedX())
+            {
+                slashEffect.transform.rotation = Quaternion.Euler(-180,-180, swordAngle);
+            }
+            else
+            {
+                slashEffect.transform.rotation = Quaternion.Euler(0,-180, swordAngle);
+            }
         }
     }
 
