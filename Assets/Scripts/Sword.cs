@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Sword : MonoBehaviour
 {
-    
+    [SerializeField] Transform weaponCollider;
     PlayerControls playerControls;
     Animator myAnimator; 
     SpriteRenderer mySpriteRenderer;
     ActiveWeapon activeWeapon;
     PlayerController playerController;
+
+    
     void Awake()
     {
         playerControls = new PlayerControls();
@@ -38,6 +40,12 @@ public class Sword : MonoBehaviour
     void Attack()
     {
         myAnimator.SetTrigger("Attack");
+        weaponCollider.gameObject.SetActive(true);
+    }
+
+    public void DoneAttackingAnimEvent()
+    {
+        weaponCollider.gameObject.SetActive(false);
     }
 
     void MouseFollowWithOffset()
@@ -50,10 +58,12 @@ public class Sword : MonoBehaviour
         if (mouseRealWorldPoint.x > playerRealWorldPoint.x)
         {
             activeWeapon.transform.rotation = Quaternion.Euler(0,0,swordAngle);
+            weaponCollider.rotation = Quaternion.Euler(0,0,swordAngle);
         }
         else 
         {
             activeWeapon.transform.rotation = Quaternion.Euler(0,-180,swordAngle);
+            weaponCollider.rotation = Quaternion.Euler(0,-180,swordAngle);
         }
     }
 
