@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 [SerializeField] int startingHealth = 3;
+[SerializeField] float knockBackThrust = 15f;
 
 Knockback knockBack;
 
+
 int currentHealth;
+
 
 void Awake() {
     knockBack = GetComponent<Knockback>();
@@ -20,7 +23,8 @@ void Start()
 public void TakeDamage(int damage)
 {
     currentHealth -= damage;
-    knockBack.GetKnockedBack(PlayerController.Instance.transform, 15f);
+    knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackThrust);
+    Debug.Log(currentHealth);
     DetectDeath();
 
 }

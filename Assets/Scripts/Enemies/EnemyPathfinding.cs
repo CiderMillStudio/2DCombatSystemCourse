@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyPathfinding : MonoBehaviour
 {
@@ -8,23 +9,27 @@ public class EnemyPathfinding : MonoBehaviour
     SpriteRenderer spriteRenderer;
     [SerializeField] float enemyMoveSpeed = 1f;
     Vector2 moveTarget;
+    Knockback knockback;
 
-    void Start()
+    void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        knockback = GetComponent<Knockback>();
     }
 
+    private void FixedUpdate() 
+    {
+        if (knockback.GettingKnockedBack)
+        {
+            return;
+        }
+        myRigidbody.MovePosition(myRigidbody.position + moveTarget * (enemyMoveSpeed * Time.fixedDeltaTime));
+        EnemySpriteFlipper();
+    }
 
-
-    public void MoveTo(Vector2 vector2)
-    {  
-        moveTarget = vector2;
-        Vector2 currentPosition = new (gameObject.transform.position.x, gameObject.transform.position.y);
-        Vector2 movePositionVector = currentPosition + moveTarget * 
-        enemyMoveSpeed * Time.fixedDeltaTime;
-        myRigidbody.MovePosition(movePositionVector);
-
+    void EnemySpriteFlipper()
+    {
         if (moveTarget.x > Mathf.Epsilon)
         {
             spriteRenderer.flipX = false;
@@ -34,4 +39,14 @@ public class EnemyPathfinding : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
+
+
+    public void MoveTo(Vector2 vector2)
+    {
+        moveTarget = vector2;
+    }
+
+
+
+    
 }

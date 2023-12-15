@@ -26,10 +26,7 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(RoamingRoutine());
     }
 
-    private void FixedUpdate() 
-    {
-        enemyPathfinding.MoveTo(enemyRoamingPosition);
-    }
+
 
     //We need a coroutine to fire every few seconds to determine the random
     //direction of enemy movement:
@@ -38,9 +35,12 @@ public class EnemyAI : MonoBehaviour
         while (state == State.Roaming)
         {
             enemyRoamingPosition = GetRoamingPosition();
+            enemyPathfinding.MoveTo(enemyRoamingPosition);
             yield return new WaitForSeconds(2f);
         }
     }
+
+
 
     private Vector2 GetRoamingPosition()
     {
