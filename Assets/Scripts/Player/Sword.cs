@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -10,13 +11,17 @@ public class Sword : MonoBehaviour
     [SerializeField] GameObject slashAnimPrefab;
     [SerializeField] Transform slashAnimSpawnPoint;
     [SerializeField] Transform weaponCollider;
+    [SerializeField] float minTimeBetweenSwordAttacks = 0.3f;
     PlayerControls playerControls;
     Animator myAnimator; 
     SpriteRenderer mySpriteRenderer;
     ActiveWeapon activeWeapon;
     PlayerController playerController;
+    
 
     GameObject slashAnim;
+
+    bool attackButtonDown, swordOnCoolDown = false;
 
     
     void Awake()
@@ -35,19 +40,43 @@ public class Sword : MonoBehaviour
 
     void Start()
     {
-        playerControls.Combat.Attack.started += _ => Attack();
+        playerControls.Combat.Attack.started += _ => StartAttacking();
+        playerControls.Combat.Attack.canceled += _ => StopAttacking();
+    }
+
+    void StartAttacking()
+    {
+        attackButtonDown = true;
+    }
+
+    void StopAttacking()
+    {
+        attackButtonDown = false;
     }
 
     private void Update() {
         MouseFollowWithOffset();
+        Attack();
     }
 
     void Attack()
     {
-        myAnimator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);
-        slashAnim = Instantiate(slashAnimPrefab,slashAnimSpawnPoint.position, Quaternion.identity);
-        slashAnim.transform.parent = this.transform.parent;
+        if (attackButtonDown && !swordOnCoolDown)
+        {   
+            swordOnCoolDown = true;
+            myAnimator.SetTrigger("Attack");
+            weaponCollider.gameObject.SetActive(true);
+            slashAnim = Instantiate(slashAnimPrefab,slashAnimSpawnPoint.position, Quaternion.identity);
+            slashAnim.transform.parent = this.transform.parent;
+            StartCoroutine(AttackCDRoutine());
+            
+        }
+    }
+
+    IEnumerator AttackCDRoutine()
+    {
+        yield return new WaitForSeconds(minTimeBetweenSwordAttacks);
+        swordOnCoolDown = false;
     }
 
     public void SwingUpFlipAnim()
