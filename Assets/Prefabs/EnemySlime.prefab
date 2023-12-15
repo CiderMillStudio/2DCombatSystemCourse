@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 6061260964379510307}
   - component: {fileID: 6147340427281203521}
   - component: {fileID: 6511196033497313253}
+  - component: {fileID: 4797261311874448877}
   m_Layer: 0
   m_Name: EnemySlime
   m_TagString: Untagged
@@ -297,7 +298,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  knockBackThrust: 15
+  knockBackThrust: 10
+  splatSlime: {fileID: 4802543771450148087, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+  splatTime: 0.1
 --- !u!114 &6511196033497313253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,4 +313,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c177d38b53d54d48aa768ae10232daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackTime: 0.25
+  knockBackTime: 0.2
+--- !u!114 &4797261311874448877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786926033934007773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b22862b3f991d94f8975a28e749b5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: 2107009849faca44c8942076ef3a25bc, type: 2}
+  restoreDefaultMatTime: 0.15

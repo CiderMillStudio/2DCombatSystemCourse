@@ -2541,7 +2541,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 369d8c74a30a48e4a801ecc8d572aadf, type: 2}
+  - {fileID: 2100000, guid: cdb3a47714747f840b943e20dcbfcf9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -44029,6 +44029,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1277426122339259746, guid: 58a3c8bf8facc634ca505ea2f314e874, type: 3}
   m_PrefabInstance: {fileID: 1448764707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1345539122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 208274498944998944, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9673804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33192337
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5744426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987129116510975219, guid: 2530b6f2657849845a8bead45436c328, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2530b6f2657849845a8bead45436c328, type: 3}
 --- !u!4 &1359129492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1277426122339259746, guid: 58a3c8bf8facc634ca505ea2f314e874, type: 3}
@@ -44329,21 +44386,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.5142488, y: 0.5211896}
-      - {x: 1.3912091, y: 0.896706}
-      - {x: 1.175621, y: 1.412385}
-      - {x: 0.7677593, y: 1.5680964}
+    - - {x: 1.7599077, y: 0.38081288}
+      - {x: 1.6368685, y: 0.896706}
+      - {x: 1.4037333, y: 1.5176675}
+      - {x: 1.2301698, y: 1.7582308}
+      - {x: 0.71511793, y: 1.8663968}
+      - {x: 0.22462702, y: 1.8705696}
       - {x: -0.06922722, y: 1.4040257}
       - {x: 0.6550069, y: 0.6197565}
       - {x: 0.5703148, y: 0.19527109}
       - {x: 0.2952714, y: -0.29364523}
       - {x: -0.2977299, y: -0.3211764}
-      - {x: -0.39683843, y: -0.93484014}
-      - {x: 0.22114134, y: -1.1919053}
-      - {x: 0.9904065, y: -0.9165746}
-      - {x: 1.2224351, y: -0.5449206}
-      - {x: 1.3286724, y: -0.26776898}
-      - {x: 1.5131273, y: 0.14698978}
+      - {x: -0.71604896, y: -0.62626153}
+      - {x: -0.537215, y: -1.0050284}
+      - {x: -0.3266344, y: -1.323374}
+      - {x: 0.0983119, y: -1.4200172}
+      - {x: 1.1307826, y: -1.249969}
+      - {x: 1.5031883, y: -0.825674}
+      - {x: 1.6094255, y: -0.56606936}
+      - {x: 1.7412391, y: -0.046028182}
   m_UseDelaunayMesh: 0
 --- !u!114 &1552653185
 MonoBehaviour:
@@ -44885,8 +44946,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7512349318461444226, guid: f4adf9dd84972154fad271d8f7864bfa, type: 3}
+      propertyPath: weaponCollider
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4374776417841447808, guid: f4adf9dd84972154fad271d8f7864bfa, type: 3}
+    - {fileID: 5222579707358255256, guid: f4adf9dd84972154fad271d8f7864bfa, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 467532028825119530, guid: f4adf9dd84972154fad271d8f7864bfa, type: 3}
       insertIndex: -1
@@ -44911,3 +44978,4 @@ SceneRoots:
   - {fileID: 1545741680}
   - {fileID: 38542811}
   - {fileID: 85060484}
+  - {fileID: 1345539122}
