@@ -13,15 +13,12 @@ public class EnemyAI : MonoBehaviour
     private State state;
     private EnemyPathfinding enemyPathfinding;
 
-    private EnemyHealth enemyHealth;
-
     Vector2 enemyRoamingPosition;
 
     private void Awake()
     {
         state = State.Roaming; //defaults initial state to roaming
         enemyPathfinding = GetComponent<EnemyPathfinding>();
-        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     void Start()
@@ -31,15 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if (enemyHealth.IsHit)
-        {
-            return;
-        }
-        else
-        {
-            enemyPathfinding.MoveTo(enemyRoamingPosition);
-        }
-        
+        enemyPathfinding.MoveTo(enemyRoamingPosition);
     }
 
     //We need a coroutine to fire every few seconds to determine the random
