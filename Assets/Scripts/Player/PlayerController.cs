@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool FacingLeft {get { return facingLeft;} set { facingLeft = value; }}
+    public bool FacingLeft {get { return facingLeft;} }
     public static PlayerController Instance; //What is the benefit of using an instance here??
     Rigidbody2D myRigidbody;
     Animator myAnimator;
@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashCDTime = 1f;
     [SerializeField] float dashSpeedMultiplier = 4f;
 
+    float startingMoveSpeed;
+
     void Awake()
     {
         Instance = this; //what is going on?!
@@ -35,7 +37,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerControls.Combat.Dash.performed += _ => Dash();
+        playerControls.Combat.Dash.performed += _ => Dash(); //this is called subscribing
+        startingMoveSpeed = playerMoveSpeed;
     }
      void OnEnable() //you need this for the new input system
     {
@@ -72,12 +75,12 @@ public class PlayerController : MonoBehaviour
         if (mouseWorldPosition.x > transform.position.x)
         {
             playerSpriteRenderer.flipX = false;
-            FacingLeft = false;
+            facingLeft = false;
         }
         else if (mouseWorldPosition.x < transform.position.x)
         {
             playerSpriteRenderer.flipX = true;
-            FacingLeft = true;
+            facingLeft = true;
         }
     }
 
@@ -98,7 +101,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator EndDashRoutine()
     {
         yield return new WaitForSeconds(dashTime);
-        playerMoveSpeed /= dashSpeedMultiplier;
+        playerMoveSpeed = startingMoveSpeed;
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCDTime);
         dashIsInCD = false;

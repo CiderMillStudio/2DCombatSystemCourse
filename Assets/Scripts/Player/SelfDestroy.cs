@@ -13,11 +13,11 @@ void Awake()
 private void Update() {
     if (ps && !ps.IsAlive())
     {
-        DestroySelf();
+        DestroySelfAnimEvent();
     }
 }
 
-public void DestroySelf()
+public void DestroySelfAnimEvent()
 {
     Destroy(gameObject);
 }

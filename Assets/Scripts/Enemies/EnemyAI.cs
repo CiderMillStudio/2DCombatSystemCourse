@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] float roamChangeDirectionTime = 2f;
     private enum State 
     {
         Roaming
@@ -36,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         {
             enemyRoamingPosition = GetRoamingPosition();
             enemyPathfinding.MoveTo(enemyRoamingPosition);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(roamChangeDirectionTime);
         }
     }
 
