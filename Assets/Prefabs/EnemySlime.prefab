@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2828915375407007993}
   - component: {fileID: 6061260964379510307}
   - component: {fileID: 6147340427281203521}
+  - component: {fileID: 6511196033497313253}
   m_Layer: 0
   m_Name: EnemySlime
   m_TagString: Untagged
@@ -221,7 +222,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &-1032909528495997664
 CapsuleCollider2D:
@@ -293,5 +294,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e69ba3634636de40ab58de59ae8b93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+--- !u!114 &6511196033497313253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786926033934007773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c177d38b53d54d48aa768ae10232daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

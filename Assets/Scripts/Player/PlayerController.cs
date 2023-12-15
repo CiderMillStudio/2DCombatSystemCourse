@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public bool FacingLeft {get { return facingLeft;} set { facingLeft = value; }}
+    public static PlayerController Instance; //What is the benefit of using an instance here??
     Rigidbody2D myRigidbody;
     Animator myAnimator;
 
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        Instance = this; //what is going on?!
         playerControls = new PlayerControls();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
