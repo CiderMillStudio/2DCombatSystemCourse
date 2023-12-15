@@ -34,4 +34,5 @@ public class EnemyPathfinding : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
+
 }

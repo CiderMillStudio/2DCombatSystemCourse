@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+public bool IsHit { get { return isHit; } set { isHit = value; } }
 [SerializeField] int startingHealth = 3;
+[SerializeField] float knockBackThrustAmount = 10f;
 
 Knockback knockBack;
+bool isHit = false;
 
 int currentHealth;
 
@@ -20,9 +23,25 @@ void Start()
 public void TakeDamage(int damage)
 {
     currentHealth -= damage;
-    knockBack.GetKnockedBack(PlayerController.Instance.transform, 15f);
+    
+    Invoke(nameof(HitAndDelay), 0f);
+    
+    
     DetectDeath();
 
+
+}
+
+void HitAndDelay()
+{
+    IsHit = true;
+    knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackThrustAmount);
+    Invoke(nameof(TurnIsHitFalse), 0.2f);
+    
+}
+
+void TurnIsHitFalse(){
+    IsHit = false;
 }
 
 
