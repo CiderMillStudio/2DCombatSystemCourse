@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,7 +17,12 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer playerSpriteRenderer;
     [SerializeField] float playerMoveSpeed = 1f;
+    [SerializeField] TrailRenderer trailRenderer;
     bool facingLeft = false;
+    bool dashIsInCD = false;
+    [SerializeField] float dashTime = 0.2f;
+    [SerializeField] float dashCDTime = 1f;
+    [SerializeField] float dashSpeedMultiplier = 4f;
 
     void Awake()
     {
@@ -27,6 +33,10 @@ public class PlayerController : MonoBehaviour
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    void Start()
+    {
+        playerControls.Combat.Dash.performed += _ => Dash();
+    }
      void OnEnable() //you need this for the new input system
     {
         playerControls.Enable();
@@ -70,6 +80,44 @@ public class PlayerController : MonoBehaviour
             FacingLeft = true;
         }
     }
+
+
+
+    void Dash()
+    {
+        if (!dashIsInCD)
+        {
+            dashIsInCD = true;
+            playerMoveSpeed *= dashSpeedMultiplier;
+            trailRenderer.emitting = true;
+            StartCoroutine(EndDashRoutine());
+        }
+        
+    }
+
+    IEnumerator EndDashRoutine()
+    {
+        yield return new WaitForSeconds(dashTime);
+        playerMoveSpeed /= dashSpeedMultiplier;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(dashCDTime);
+        dashIsInCD = false;
+
+    }
+    
+    // IEnumerator DashRoutine()
+    // {
+    //     dashIsInCD = true;
+    //     playerMoveSpeed *= dashSpeedMultiplier;
+    //     trailRenderer.emitting = true;
+    //     yield return new WaitForSeconds(dashTime);    //This was my attempt, did not work.
+    //     playerMoveSpeed /= dashSpeedMultiplier;
+    //     trailRenderer.emitting = false;
+    //     yield return new WaitForSeconds(dashCDTime);
+    //     dashIsInCD = false;
+    // }
+
+    
 
 
 }
