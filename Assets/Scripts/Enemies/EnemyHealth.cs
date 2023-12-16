@@ -31,7 +31,6 @@ public void TakeDamage(int damage)
     currentHealth -= damage;
     knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackThrust);
     StartCoroutine(flash.FlashRoutine());
-    Debug.Log(currentHealth);
     StartCoroutine(DetectDeath(flash.GetRestoreMatTime()));
 
 }
