@@ -17,8 +17,8 @@ TagManager:
   - Player
   - Trees
   - Bush
-  - 
-  - 
+  - Camera
+  - CinemachineConfiner
   - 
   - 
   - 
@@ -46,6 +46,15 @@ TagManager:
   - name: Path Tiles
     uniqueID: 789048975
     locked: 0
+  - name: Water Tiles
+    uniqueID: 1514936901
+    locked: 0
+  - name: Hills1 Tiles
+    uniqueID: 1784077037
+    locked: 0
+  - name: Hills2 Tiles
+    uniqueID: 4248958615
+    locked: 0
   - name: Shadows
     uniqueID: 3187689087
     locked: 0
@@ -60,4 +69,7 @@ TagManager:
     locked: 0
   - name: Trees
     uniqueID: 709383255
+    locked: 0
+  - name: Canopy Tiles
+    uniqueID: 3212323271
     locked: 0
