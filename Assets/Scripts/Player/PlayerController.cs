@@ -5,10 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     public bool FacingLeft {get { return facingLeft;} }
-    public static PlayerController Instance; //What is the benefit of using an instance here??
+    // public static PlayerController Instance; //What is the benefit of using an instance here??
+    //We don't need the instance anymore, because we are now inheriting from the singleton class
     Rigidbody2D myRigidbody;
     Animator myAnimator;
 
@@ -26,9 +27,11 @@ public class PlayerController : MonoBehaviour
 
     float startingMoveSpeed;
 
-    void Awake()
+    protected override void Awake() //Since the "Base Awake()" function is from our Singleton.cs class, and because this class inherits from Singleton.cs, we need to call our local Awake() function as "protect override".
     {
-        Instance = this; //what is going on?!
+        base.Awake(); //By calling base.Awake(), we call the code from the singleton class, and make this instance into a singleton. Without this line of code, PlayerController.Awake() will be summoned and ignore all code in the Singleton.Awake() mother-class from which this class inherits, resulting in a NON-singleton result.
+        // Instance = this; //what is going on?! 
+        //no need for instance anymore.
         playerControls = new PlayerControls();
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
