@@ -95373,18 +95373,6 @@ PrefabInstance:
       propertyPath: sceneTransitionName
       value: West_Entrance
       objectReference: {fileID: 0}
-    - target: {fileID: 5742645160944733283, guid: 1674d2edda8d75544afad21e2241ad44, type: 3}
-      propertyPath: m_SortingLayer
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5742645160944733283, guid: 1674d2edda8d75544afad21e2241ad44, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5742645160944733283, guid: 1674d2edda8d75544afad21e2241ad44, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1784077037
-      objectReference: {fileID: 0}
     - target: {fileID: 5794684426754989461, guid: 1674d2edda8d75544afad21e2241ad44, type: 3}
       propertyPath: sceneTransitionName
       value: East_Entrance
