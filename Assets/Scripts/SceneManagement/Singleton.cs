@@ -18,6 +18,10 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T> //We're setting
             instance = (T)this; //if not, this instance will be assigned to THIS isntance of the given type (kinda confusing, just rolling with it)
         }
 
-        DontDestroyOnLoad(gameObject); //if this instance has gotten this far, it means it's now a singleton that needs to be kept constant between scenes, so don't destroy on load!
+        if (!gameObject.transform.parent) //if this game object does NOT have a parent
+        {
+            DontDestroyOnLoad(gameObject); //if this instance has gotten this far, it means it's now a singleton that needs to be kept constant between scenes, so don't destroy on load!
+        }
+        
     }
 }
