@@ -120,6 +120,78 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Inventory",
+            "id": "9ca62195-5c72-4c2c-8a19-cefdaa5a82bf",
+            "actions": [
+                {
+                    "name": "Keyboard Keys",
+                    "type": "Value",
+                    "id": "ab4977a9-f027-43d8-8d64-7c60b18224ec",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6e6c9d5f-09fc-4f67-b622-1166d3d6825d",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Keyboard Keys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0224ac19-5ebb-414d-a2b5-df9fe0b9547a",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Keyboard Keys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59010bdf-118c-442e-83b3-f852ce4332cf",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Keyboard Keys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1f4dec4-e6b6-4942-822b-88ac2dfc0f84",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Keyboard Keys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ee94996-7646-4ea7-8cfa-425e0555626e",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Keyboard Keys",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
