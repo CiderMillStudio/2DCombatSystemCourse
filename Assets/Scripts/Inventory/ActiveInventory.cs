@@ -35,5 +35,11 @@ public class ActiveInventory : MonoBehaviour
         }
 
         this.transform.GetChild(activeSlotIndexNum).GetChild(0).gameObject.SetActive(true);
+
+        ChangeActiveWeapon(); //just added this!!
+    }
+
+    void ChangeActiveWeapon() {
+        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name); //Since GetWeaponInfo is a public method that returns the weaponInfo scriptable object you can get the weaponPrefab name (string name of the weapon prefab)
     }
 }
