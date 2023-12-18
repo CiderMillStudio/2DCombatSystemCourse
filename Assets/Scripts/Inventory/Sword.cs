@@ -6,77 +6,60 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Sword : MonoBehaviour
+public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] GameObject slashAnimPrefab;
     [SerializeField] Transform slashAnimSpawnPoint;
     [SerializeField] Transform weaponCollider;
     [SerializeField] float minTimeBetweenSwordAttacks = 0.3f;
-    PlayerControls playerControls;
+
     Animator myAnimator; 
     SpriteRenderer mySpriteRenderer;
-    ActiveWeapon activeWeapon;
     PlayerController playerController;
+
+    ActiveWeapon activeWeapon;
     
 
     GameObject slashAnim;
 
-    bool attackButtonDown, swordOnCoolDown = false;
+    
 
     
     void Awake()
     {
-        playerControls = new PlayerControls();
+        
         myAnimator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        activeWeapon = GetComponentInParent<ActiveWeapon>();
         playerController = GetComponentInParent<PlayerController>();
+        activeWeapon = GetComponentInParent<ActiveWeapon>();
         
     }
-    void OnEnable()
-    {
-        playerControls.Enable();
-    }
 
-    void Start()
-    {
-        playerControls.Combat.Attack.started += _ => StartAttacking();
-        playerControls.Combat.Attack.canceled += _ => StopAttacking();
-    }
 
-    void StartAttacking()
-    {
-        attackButtonDown = true;
-    }
 
-    void StopAttacking()
-    {
-        attackButtonDown = false;
-    }
 
     private void Update() {
         MouseFollowWithOffset();
-        Attack();
     }
 
-    void Attack()
+    public void Attack() //(Sword AS IWeapon)
     {
-        if (attackButtonDown && !swordOnCoolDown)
-        {   
-            swordOnCoolDown = true;
+        
+        
+            ActiveWeapon.Instance.ToggleIAttacking(true);
             myAnimator.SetTrigger("Attack");
             weaponCollider.gameObject.SetActive(true);
             slashAnim = Instantiate(slashAnimPrefab,slashAnimSpawnPoint.position, Quaternion.identity);
             slashAnim.transform.parent = this.transform.parent;
             StartCoroutine(AttackCDRoutine());
             
-        }
+        
     }
 
     IEnumerator AttackCDRoutine()
     {
         yield return new WaitForSeconds(minTimeBetweenSwordAttacks);
-        swordOnCoolDown = false;
+        ActiveWeapon.Instance.ToggleIAttacking(false);
     }
 
     public void SwingUpFlipAnim()
