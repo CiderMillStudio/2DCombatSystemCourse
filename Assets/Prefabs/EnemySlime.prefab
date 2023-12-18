@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b5fef80004088458fd5f647c5e39b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roamChangeDirectionTime: 2
 --- !u!114 &6061260964379510307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,5 +327,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b22862b3f991d94f8975a28e749b5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteFlashMat: {fileID: 2100000, guid: 2107009849faca44c8942076ef3a25bc, type: 2}
+  whiteFlashMat: {fileID: 2100000, guid: d420fc01a6d9cfc42a2dfcae23744e6c, type: 2}
   restoreDefaultMatTime: 0.15
