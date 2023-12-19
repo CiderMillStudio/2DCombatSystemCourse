@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
-    [SerializeField] MonoBehaviour currentActiveWeapon; //we can drop the sword gameobject into this field in unity
+    public MonoBehaviour CurrentActiveWeapon { get; private set; } //we can drop the sword gameobject into this field in unity
     PlayerControls playerControls;
 
     bool attackButtonDown, isAttacking = false;
@@ -29,6 +29,15 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         Attack();
     }
 
+    public void NewWeapon(MonoBehaviour newWeapon) {
+        CurrentActiveWeapon = newWeapon;
+    }
+
+    public void WeaponNull()
+    {
+        CurrentActiveWeapon = null;
+    }
+
     public void ToggleIAttacking(bool value) {
         isAttacking = value;
     }
@@ -47,7 +56,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         if (attackButtonDown && !isAttacking) {
         
         isAttacking = true;
-        (currentActiveWeapon as IWeapon).Attack();
+        (CurrentActiveWeapon as IWeapon).Attack();
         
         }
 

@@ -6,7 +6,6 @@ public class ActiveInventory : MonoBehaviour
 {
     private int activeSlotIndexNum = 0; //keeps track of which inventory slot we're active in
 
-
     private PlayerControls playerControls;
 
     private void Awake() {
@@ -15,6 +14,8 @@ public class ActiveInventory : MonoBehaviour
 
     private void Start() {
         playerControls.Inventory.KeyboardKeys.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>()); 
+
+        ToggleActiveHighlight(0); //at start of game, player has sword by default 
     }
 
 
@@ -36,10 +37,32 @@ public class ActiveInventory : MonoBehaviour
 
         this.transform.GetChild(activeSlotIndexNum).GetChild(0).gameObject.SetActive(true);
 
-        ChangeActiveWeapon(); //just added this!!
+        ChangeActiveWeapon();
     }
 
     void ChangeActiveWeapon() {
-        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name); //Since GetWeaponInfo is a public method that returns the weaponInfo scriptable object you can get the weaponPrefab name (string name of the weapon prefab)
+
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
+
+        if (!transform.GetChild(activeSlotIndexNum).GetComponentInChildren<InventorySlot>())
+        {
+            ActiveWeapon.Instance.WeaponNull();
+            return;
+        }
+        
+        GameObject weaponToSpawn = transform.GetChild(activeSlotIndexNum).
+        GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
+
+        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity); //FindObjectOfType<PlayerController>().GetComponentInChildren<ActiveWeapon>().gameObject.transform);
+
+        newWeapon.transform.parent = ActiveWeapon.Instance.transform;
+
+        ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
+
     }
+
+    
 }
