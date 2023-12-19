@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Staff : MonoBehaviour, IWeapon //requires the public Attack method
 {
+    [SerializeField] private WeaponInfo  weaponInfo;
     // Transform weaponCollider;
     Animator myAnimator;
     SpriteRenderer mySpriteRenderer;
@@ -26,10 +27,14 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method
     private void Update() {
         MouseFollowWithOffset();
     }
+
+    public WeaponInfo GetWeaponInfo() {
+        return weaponInfo;
+    }
     public void Attack() //without this "public attack" function, IWeapon cannot be implemented!!! (Try commenting this out and watch the IWeapon implementation return an error!)
     {
         Debug.Log("Staff attack!");
-        ActiveWeapon.Instance.ToggleIAttacking(false);
+
     }
      void MouseFollowWithOffset()
     {

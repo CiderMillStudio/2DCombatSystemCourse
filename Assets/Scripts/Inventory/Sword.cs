@@ -12,6 +12,7 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] Transform slashAnimSpawnPoint;
     Transform weaponCollider;
     [SerializeField] float minTimeBetweenSwordAttacks = 0.3f;
+    [SerializeField] private WeaponInfo  weaponInfo;
 
     Animator myAnimator; 
     SpriteRenderer mySpriteRenderer;
@@ -39,25 +40,22 @@ public class Sword : MonoBehaviour, IWeapon
         MouseFollowWithOffset();
     }
 
+    public WeaponInfo GetWeaponInfo() {
+        return weaponInfo;
+    }
+
     public void Attack() //(Sword AS IWeapon)
     {
         
         
-            ActiveWeapon.Instance.ToggleIAttacking(true);
             myAnimator.SetTrigger("Attack");
             weaponCollider.gameObject.SetActive(true);
             slashAnim = Instantiate(slashAnimPrefab,slashAnimSpawnPoint.position, Quaternion.identity);
             slashAnim.transform.parent = this.transform.parent;
-            StartCoroutine(AttackCDRoutine());
             
         
     }
 
-    IEnumerator AttackCDRoutine()
-    {
-        yield return new WaitForSeconds(minTimeBetweenSwordAttacks);
-        ActiveWeapon.Instance.ToggleIAttacking(false);
-    }
 
     public void SwingUpFlipAnim()
     {

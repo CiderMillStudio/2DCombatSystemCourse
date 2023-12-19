@@ -7,7 +7,10 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     public MonoBehaviour CurrentActiveWeapon { get; private set; } //we can drop the sword gameobject into this field in unity
     PlayerControls playerControls;
 
+
     bool attackButtonDown, isAttacking = false;
+
+    private float timeBetweenAttacks;
 
     protected override void Awake() {
         base.Awake();
@@ -16,7 +19,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     void OnEnable()
     {
-        playerControls.Enable();
+        playerControls.Enable(); 
     }
 
     void Start()
@@ -31,6 +34,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     public void NewWeapon(MonoBehaviour newWeapon) {
         CurrentActiveWeapon = newWeapon;
+        AttackCooldown();
+        timeBetweenAttacks = (CurrentActiveWeapon as IWeapon).GetWeaponInfo().weaponCooldown;
     }
 
     public void WeaponNull()
@@ -38,14 +43,20 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         CurrentActiveWeapon = null;
     }
 
-    public void SetIsAttackingFalse()
+    private void AttackCooldown()
     {
+        isAttacking = true; 
+        StopAllCoroutines();
+        StartCoroutine(TimeBetweenAttacksRoutine());
+    }
+
+    private IEnumerator TimeBetweenAttacksRoutine()
+    {
+        yield return new WaitForSeconds(timeBetweenAttacks);
         isAttacking = false;
     }
 
-    public void ToggleIAttacking(bool value) {
-        isAttacking = value;
-    }
+
     void StartAttacking()
     {
         attackButtonDown = true;
@@ -59,8 +70,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     void Attack() {
         
         if (attackButtonDown && !isAttacking) {
-        
-        isAttacking = true;
+        AttackCooldown();
         (CurrentActiveWeapon as IWeapon).Attack();
         
         }

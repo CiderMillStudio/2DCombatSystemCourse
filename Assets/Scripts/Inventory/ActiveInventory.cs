@@ -45,7 +45,6 @@ public class ActiveInventory : MonoBehaviour
 
         if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
         {
-            ActiveWeapon.Instance.SetIsAttackingFalse();
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
         }
 
