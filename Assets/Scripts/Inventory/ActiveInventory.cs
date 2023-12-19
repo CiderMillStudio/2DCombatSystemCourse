@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ActiveInventory : MonoBehaviour
@@ -44,6 +45,7 @@ public class ActiveInventory : MonoBehaviour
 
         if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
         {
+            ActiveWeapon.Instance.SetIsAttackingFalse();
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
         }
 
@@ -57,6 +59,7 @@ public class ActiveInventory : MonoBehaviour
         GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
 
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity); //FindObjectOfType<PlayerController>().GetComponentInChildren<ActiveWeapon>().gameObject.transform);
+        ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0,0,0); //it's important to reset the Parent's Euler rotation before assigning it to its new child.
 
         newWeapon.transform.parent = ActiveWeapon.Instance.transform;
 

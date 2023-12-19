@@ -38,6 +38,11 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         CurrentActiveWeapon = null;
     }
 
+    public void SetIsAttackingFalse()
+    {
+        isAttacking = false;
+    }
+
     public void ToggleIAttacking(bool value) {
         isAttacking = value;
     }
