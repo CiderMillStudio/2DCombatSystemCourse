@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69ba3634636de40ab58de59ae8b93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  startingHealth: 10
   knockBackThrust: 15
   splatSlime: {fileID: 4802543771450148087, guid: 2530b6f2657849845a8bead45436c328, type: 3}
   splatTime: 0.1

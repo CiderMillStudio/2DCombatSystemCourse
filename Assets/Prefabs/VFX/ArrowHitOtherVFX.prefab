@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 111482409073405977}
   - component: {fileID: 6173065420588602733}
   m_Layer: 0
-  m_Name: ArrowHitEnemyVFX
+  m_Name: ArrowHitOtherVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,9 +222,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
-      minColor: {r: 0.509434, g: 0.031641863, b: 0, a: 1}
-      maxColor: {r: 0.24528301, g: 0.020825917, b: 0, a: 1}
+      minMaxState: 0
+      minColor: {r: 1, g: 0.28949142, b: 0, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
