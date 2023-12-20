@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - Bush
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Bush
   - Camera
   - CinemachineConfiner
-  - 
-  - 
+  - Projectile
+  - Canopy
   - 
   - 
   - 

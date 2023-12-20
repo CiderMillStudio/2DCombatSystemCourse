@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: fa473e071d37a664a867d8aa63571655, type: 2}
+  arrowObject: {fileID: 3354595315422541718, guid: 72f7e29f56a16d344a6d1d9252e3d9c3, type: 3}
+  arrowSpeed: 20
 --- !u!212 &-5300010907256943139
 SpriteRenderer:
   m_ObjectHideFlags: 0
