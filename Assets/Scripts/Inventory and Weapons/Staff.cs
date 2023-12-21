@@ -40,17 +40,15 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method 
     }
     public void Attack() //without this "public attack" function, IWeapon cannot be implemented!!! (Try commenting this out and watch the IWeapon implementation return an error!)
     {
-        
         myAnimator.SetTrigger("isAttacking");
-        Debug.Log("Staff attack!");
-
     }
 
 
     public void SpawnStaffProjectileAnimEvent()
     {
-        GameObject magicLaserInstance = Instantiate(magicLaser, magicLaserSpawnPoint.position, Quaternion.identity);
+        GameObject newLaser = Instantiate(magicLaser, magicLaserSpawnPoint.position, Quaternion.identity);
         ParticleSystem staffVFXBottomInstance = Instantiate(magicStaffVFXBottom, magicStaffVFXSpawnPointBottom.position, magicStaffVFXSpawnPointBottom.rotation);
+        newLaser.GetComponent<MagicLaser>().UpdateLaserRange(weaponInfo.weaponRange);
     }
 
     public void SpawnStaffParticleVFX()

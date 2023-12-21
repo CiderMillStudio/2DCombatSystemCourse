@@ -47,15 +47,20 @@ public class ActiveInventory : MonoBehaviour
         {
             Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
         }
+        
+        Transform childTransform = transform.GetChild(activeSlotIndexNum);
+        InventorySlot inventorySlot = childTransform.GetComponentInChildren<InventorySlot>();
+        WeaponInfo weaponInfo = inventorySlot.GetWeaponInfo();
 
-        if (!transform.GetChild(activeSlotIndexNum).GetComponentInChildren<InventorySlot>())
+        if (weaponInfo == null)
         {
             ActiveWeapon.Instance.WeaponNull();
             return;
         }
+
+        GameObject weaponToSpawn = weaponInfo.weaponPrefab;
         
-        GameObject weaponToSpawn = transform.GetChild(activeSlotIndexNum).
-        GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
+
 
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity); //FindObjectOfType<PlayerController>().GetComponentInChildren<ActiveWeapon>().gameObject.transform);
         ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0,0,0); //it's important to reset the Parent's Euler rotation before assigning it to its new child.
