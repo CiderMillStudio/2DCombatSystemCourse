@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6922283346552994263}
   - component: {fileID: 6952959671105166309}
+  - component: {fileID: -4569897102109253122}
   - component: {fileID: 7097927570727817218}
   - component: {fileID: 3980586940039296106}
   - component: {fileID: 1505121181799423161}
   - component: {fileID: 5864283862406372344}
   - component: {fileID: -4710709612330058871}
-  - component: {fileID: -1873031869111543940}
   - component: {fileID: 7594080342623531931}
   m_Layer: 12
   m_Name: Arrow
@@ -91,6 +91,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4569897102109253122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354595315422541718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbae62b093c326b4193ad9c1f068bddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &7097927570727817218
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -313,19 +325,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.03}
   m_Size: {x: 1.04, y: 0.58}
   m_Direction: 1
---- !u!114 &-1873031869111543940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354595315422541718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbae62b093c326b4193ad9c1f068bddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 1
 --- !u!114 &7594080342623531931
 MonoBehaviour:
   m_ObjectHideFlags: 0

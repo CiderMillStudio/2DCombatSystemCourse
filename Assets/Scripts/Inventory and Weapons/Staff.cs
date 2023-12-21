@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Staff : MonoBehaviour, IWeapon //requires the public Attack method
+public class Staff : MonoBehaviour, IWeapon //requires the public Attack method AND GetWeaponInfo method;
 {
     [SerializeField] private WeaponInfo  weaponInfo;
     // Transform weaponCollider;
+    [SerializeField] GameObject magicLaser;
+    [SerializeField] Transform magicLaserSpawnPoint;
+    [SerializeField] ParticleSystem magicStaffVFX;
+    [SerializeField] ParticleSystem magicStaffVFXBottom;
+    [SerializeField] Transform magicStaffVFXSpawnPoint;
+    [SerializeField] Transform magicStaffVFXSpawnPointBottom;
+
     Animator myAnimator;
     SpriteRenderer mySpriteRenderer;
 
@@ -33,9 +40,24 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method
     }
     public void Attack() //without this "public attack" function, IWeapon cannot be implemented!!! (Try commenting this out and watch the IWeapon implementation return an error!)
     {
+        
+        myAnimator.SetTrigger("isAttacking");
         Debug.Log("Staff attack!");
 
     }
+
+
+    public void SpawnStaffProjectileAnimEvent()
+    {
+        GameObject magicLaserInstance = Instantiate(magicLaser, magicLaserSpawnPoint.position, Quaternion.identity);
+        ParticleSystem staffVFXBottomInstance = Instantiate(magicStaffVFXBottom, magicStaffVFXSpawnPointBottom.position, magicStaffVFXSpawnPointBottom.rotation);
+    }
+
+    public void SpawnStaffParticleVFX()
+    {
+        ParticleSystem staffVFXInstance = Instantiate(magicStaffVFX, magicStaffVFXSpawnPoint, false);
+    }
+
      void MouseFollowWithOffset()
     {
         Vector3 playerRealWorldPoint = PlayerController.Instance.transform.position;    

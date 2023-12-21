@@ -42,7 +42,6 @@ public class Projectile : MonoBehaviour
         {
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             
-            enemyHealth.TakeDamage(weaponInfo.weaponDamage);
             Destroy(gameObject);
             ProjectileHitEnemy(gameObject.transform.position);
     
