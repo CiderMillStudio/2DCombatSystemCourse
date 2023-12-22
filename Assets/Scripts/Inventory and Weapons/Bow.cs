@@ -34,7 +34,7 @@ public class Bow : MonoBehaviour, IWeapon
         
         Quaternion arrowRotation = ActiveWeapon.Instance.transform.rotation;
         GameObject arrowInstance = Instantiate(arrow, arrowSpawnPoint.position, arrowRotation) ;
-        arrowInstance.GetComponent<Projectile>().UpdateWeaponInfo(weaponInfo);
+        arrowInstance.GetComponent<Projectile>().UpdateProjectileRange(weaponInfo.weaponRange);
 
     }
 
