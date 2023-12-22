@@ -36,8 +36,6 @@ public class Bow : MonoBehaviour, IWeapon
         GameObject arrowInstance = Instantiate(arrow, arrowSpawnPoint.position, arrowRotation) ;
         arrowInstance.GetComponent<Projectile>().UpdateWeaponInfo(weaponInfo);
 
-        
-        
     }
 
 

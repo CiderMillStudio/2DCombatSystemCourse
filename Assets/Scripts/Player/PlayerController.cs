@@ -25,7 +25,6 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] float dashCDTime = 1f;
     [SerializeField] float dashSpeedMultiplier = 4f;
     [SerializeField] Transform weaponCollider;
-    [SerializeField] Transform slashAnimSpawnPoint;
 
     Knockback knockback;
 
@@ -81,11 +80,6 @@ public class PlayerController : Singleton<PlayerController>
     public Transform GetWeaponCollider()
     {
         return weaponCollider;
-    }
-
-    public Transform GetSlashAnimSpawnPoint()
-    {
-        return slashAnimSpawnPoint;
     }
 
     void Move()

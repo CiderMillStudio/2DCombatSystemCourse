@@ -17,7 +17,7 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method 
     Animator myAnimator;
     SpriteRenderer mySpriteRenderer;
 
-    Transform magicAnimSpawnPoint;
+    
     
     void Awake()
     {
@@ -27,8 +27,7 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method 
 
 
     private void Start() {
-        // weaponCollider = PlayerController.Instance.GetWeaponCollider();
-        magicAnimSpawnPoint = PlayerController.Instance.GetSlashAnimSpawnPoint();
+
     }
 
     private void Update() {
