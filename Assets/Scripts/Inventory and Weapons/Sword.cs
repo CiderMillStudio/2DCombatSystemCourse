@@ -11,7 +11,6 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] GameObject slashAnimPrefab;
     [SerializeField] Transform slashAnimSpawnPoint;
     Transform weaponCollider;
-    [SerializeField] float minTimeBetweenSwordAttacks = 0.3f;
     [SerializeField] private WeaponInfo  weaponInfo;
 
     Animator myAnimator; 

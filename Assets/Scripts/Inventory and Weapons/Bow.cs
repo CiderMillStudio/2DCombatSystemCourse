@@ -10,7 +10,7 @@ public class Bow : MonoBehaviour, IWeapon
     [SerializeField] private WeaponInfo  weaponInfo;
     [SerializeField] GameObject arrowObject;
 
-    [SerializeField] float arrowSpeed =1f;
+
 
     [SerializeField] Transform arrowSpawnPoint;
 
