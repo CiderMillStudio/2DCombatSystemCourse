@@ -15,6 +15,7 @@ public class Knockback : MonoBehaviour
 
     public void GetKnockedBack(Transform damageSource, float knockBackThrust)
     {
+ 
         GettingKnockedBack = true;
         Vector2 difference = (transform.position - damageSource.position).normalized * knockBackThrust * rb.mass;
         //What is .normalize? By multiplying the difference by the mass of the rb, wouldn't the distance become greater?

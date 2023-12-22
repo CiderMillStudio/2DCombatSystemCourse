@@ -27,6 +27,8 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] Transform weaponCollider;
     [SerializeField] Transform slashAnimSpawnPoint;
 
+    Knockback knockback;
+
     float startingMoveSpeed;
 
     protected override void Awake() //Since the "Base Awake()" function is from our Singleton.cs class, and because this class inherits from Singleton.cs, we need to call our local Awake() function as "protect override".
@@ -38,6 +40,7 @@ public class PlayerController : Singleton<PlayerController>
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        knockback = GetComponent<Knockback>();
     }
 
     void Start()
@@ -58,14 +61,21 @@ public class PlayerController : Singleton<PlayerController>
     void PlayerInput()
     {
         moveInput = playerControls.Movement.Move.ReadValue<Vector2>();
-
         myAnimator.SetFloat("moveAlongX", moveInput.x);
         myAnimator.SetFloat("moveAlongY", moveInput.y);
+
+
+       
     }
 
     void FixedUpdate() //Fixed update is good for physics, while update is good for player input
     {
-        Move();
+        if (!knockback.GettingKnockedBack) 
+        {
+            Move();
+
+
+        }
     }
 
     public Transform GetWeaponCollider()
