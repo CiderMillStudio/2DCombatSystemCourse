@@ -45,6 +45,8 @@ public class Projectile : MonoBehaviour
 
         if (!other.isTrigger && enemyHealth || player)
         {
+            if (enemyHealth && isEnemyProjectile) {return;}
+            if (player && !isEnemyProjectile) {return;}
             if (player && isEnemyProjectile)
             {
                 player.TakeDamage(1, transform);

@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class EnemyPathfinding : MonoBehaviour
 {
     Rigidbody2D myRigidbody;
     SpriteRenderer spriteRenderer;
     [SerializeField] float enemyMoveSpeed = 1f;
+
     Vector2 moveTarget;
     Knockback knockback;
+
+
 
     void Awake()
     {
@@ -40,11 +45,34 @@ public class EnemyPathfinding : MonoBehaviour
         }
     }
 
+    public void StopMoving()
+    {
+        moveTarget = Vector3.zero;
+    }
+
 
     public void MoveTo(Vector2 vector2)
     {
         moveTarget = vector2;
     }
+
+    public void SetEnemyMoveSpeed(float newMoveSpeed)
+    {
+        this.enemyMoveSpeed = newMoveSpeed;
+    }
+
+    public Vector2 MoveToward(Transform thisObject, Transform ObjectToMoveTowards)
+    {
+        Vector2 thisObjectsPosition = new (thisObject.position.x, thisObject.position.y);
+        Vector2 OtherObjectsPosition = new (ObjectToMoveTowards.position.x, ObjectToMoveTowards.position.y);
+
+        Vector2 moveTowardsDirection = OtherObjectsPosition - thisObjectsPosition;
+        
+        Vector3 normalizedVector = Vector3.Normalize(moveTowardsDirection);
+
+        return normalizedVector;
+    }
+
 
 
 

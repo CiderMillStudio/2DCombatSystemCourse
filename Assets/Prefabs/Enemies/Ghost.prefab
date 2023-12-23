@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 2109112202308287102}
   - component: {fileID: 1217606766489274015}
   - component: {fileID: 2150115037840044786}
+  - component: {fileID: 5272922451726969977}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -144,7 +145,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 20fca22b2393b0845b539b9ac1d0d7c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,6 +252,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamChangeDirectionTime: 2
+  thresholdAttackDistance: 5
+  thresholdHuntingRadius: 7
+  enemyType: {fileID: 5272922451726969977}
+  attackCooldownTime: 0.5
+  StopMovingWhileAttacking: 0
+  attackingMoveSpeed: 4.5
+  roamingMoveSpeed: 1
 --- !u!114 &4708924726560885719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad06a00367bc2a4e8f764af310f50d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMoveSpeed: 1
+  enemyMoveSpeed: 3
 --- !u!114 &2109112202308287102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,3 +315,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: d420fc01a6d9cfc42a2dfcae23744e6c, type: 2}
   restoreDefaultMatTime: 0.15
+--- !u!114 &5272922451726969977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946065161478452207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda220e187bfe0243801c7d86db661ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1444742668903816888, guid: 34416b20e23844844aedd0c1457f6825, type: 3}

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GhostBullet
+  m_Name: GhostGlow
   m_Shader: {fileID: -6465566751694194690, guid: cbaae89442d3ca94aaf749dba08de82b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 1.999375, g: 3.334155, b: 12.844468, a: 0}
+    - _Color: {r: 1.0876726, g: 1.3740216, b: 3.4415908, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4621814826950525954
 MonoBehaviour:

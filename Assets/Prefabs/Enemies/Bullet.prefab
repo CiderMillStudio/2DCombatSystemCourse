@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 42be7084178702240b9b909dba7c1636, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48584908, g: 1, b: 0.573631, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f323576442859b34eb4b3777553b9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEnemyVFX: {fileID: 0}
-  HitOtherVFX: {fileID: 0}
-  projectileSpeed: 5
+  HitEnemyVFX: {fileID: 8365781759903145089, guid: fcb0ee2e93d448643964eb1b08cedf4e, type: 3}
+  HitOtherVFX: {fileID: 8365781759903145089, guid: b3d364caed114914fbd39a072253a7e3, type: 3}
+  projectileSpeed: 7
+  isEnemyProjectile: 1
+  projectileRange: 30
 --- !u!58 &4508590509563667368
 CircleCollider2D:
   m_ObjectHideFlags: 0
