@@ -73,7 +73,19 @@ public class EnemyPathfinding : MonoBehaviour
         return normalizedVector;
     }
 
+    public void MakeEnemyFacePlayer()
+    {
+        Vector2 vector = PlayerController.Instance.transform.position - transform.position;
 
+        if (vector.x <= 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
 
 
     

@@ -253,11 +253,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roamChangeDirectionTime: 2
   thresholdAttackDistance: 5
-  thresholdHuntingRadius: 7
+  thresholdHuntingRadius: 15
   enemyType: {fileID: 5272922451726969977}
   attackCooldownTime: 0.5
   StopMovingWhileAttacking: 0
-  attackingMoveSpeed: 4.5
+  attackingMoveSpeed: 2.5
   roamingMoveSpeed: 1
 --- !u!114 &4708924726560885719
 MonoBehaviour:
@@ -328,3 +328,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1444742668903816888, guid: 34416b20e23844844aedd0c1457f6825, type: 3}
+  bulletMoveSpeed: 8
+  roundsPerBurst: 4
+  timeBetweenBursts: 1.5
+  timeBetweenRoundsWithinABurst: 0.5
+  projectilesPerRound: 8
+  angleSpread: 125
+  startingDistance: 0.3
+  stagger: 1
+  oscillate: 1

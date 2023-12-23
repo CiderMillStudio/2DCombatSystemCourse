@@ -273,6 +273,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamChangeDirectionTime: 2
+  thresholdAttackDistance: 0
+  thresholdHuntingRadius: 8
+  enemyType: {fileID: 0}
+  attackCooldownTime: 1
+  StopMovingWhileAttacking: 0
+  attackingMoveSpeed: 3
+  roamingMoveSpeed: 1
 --- !u!114 &6061260964379510307
 MonoBehaviour:
   m_ObjectHideFlags: 0

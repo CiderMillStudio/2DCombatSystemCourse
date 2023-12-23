@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float roamChangeDirectionTime = 2f;
-    [SerializeField] float thresholdAttackDistance = 5f;
+    [SerializeField] float thresholdAttackDistance = 0f;
     [SerializeField] float thresholdHuntingRadius = 8f;
 
     [SerializeField] MonoBehaviour enemyType; 
@@ -109,6 +109,7 @@ public class EnemyAI : MonoBehaviour
         if (StopMovingWhileAttacking)
         {
             enemyPathfinding.StopMoving();
+            enemyPathfinding.MakeEnemyFacePlayer();
         }
         else
         {
@@ -134,5 +135,8 @@ public class EnemyAI : MonoBehaviour
         return new Vector2 (Random.Range(-1f,1f), Random.Range(-1f,1f));
         
     }
+
+
+
     
 }
