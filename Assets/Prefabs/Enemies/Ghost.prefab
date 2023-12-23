@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b22862b3f991d94f8975a28e749b5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteFlashMat: {fileID: 2100000, guid: d420fc01a6d9cfc42a2dfcae23744e6c, type: 2}
+  whiteFlashMat: {fileID: 2100000, guid: 78ede06c5e4535b4aa1e02b004121467, type: 2}
   restoreDefaultMatTime: 0.15
 --- !u!114 &5272922451726969977
 MonoBehaviour:
