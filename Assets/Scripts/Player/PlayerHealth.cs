@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
             knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
             canTakeDamage = false;
             currentHealth -= damageAmount;
+            ScreenShakeManager.Instance.ShakeScreen();
             StartCoroutine(flash.FlashRoutine());
             StartCoroutine(DamageRecoveryRoutine());
     }
