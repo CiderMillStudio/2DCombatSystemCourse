@@ -1,26 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Singleton<PlayerHealth>
 {
-    [SerializeField] int maxPlayerHealth = 3;
+    [SerializeField] int maxPlayerHealth = 6;
     [SerializeField] float knockBackThrustAmount = 15f;
     [SerializeField] float damageRecoveryTime = 0.2f;
-    int currentHealth;
+
+    int maximumNumberOfHeartContainers; // i.e. Max Health/2 (one health is a half heart)
+    [SerializeField] int currentHealth = 6;
     Knockback knockback;
     Flash flash;
 
     private bool canTakeDamage = true;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
+        SetMaximumNumberOfHeartContainers();
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
+        //currentHealth = maxPlayerHealth;
     }
 
     private void Start() {
-        currentHealth = maxPlayerHealth;
+        
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -32,6 +38,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    void SetMaximumNumberOfHeartContainers()
+    {
+        if (maxPlayerHealth % 2 >= 1)
+        {
+            maximumNumberOfHeartContainers = (maxPlayerHealth/2) + 1;
+        }
+        else
+        {
+            maximumNumberOfHeartContainers = maxPlayerHealth/2;
+        }
+        
+
+    }
     public void TakeDamage(int damageAmount, Transform hitTransform)
     {
             if (!canTakeDamage) { return; }
@@ -49,5 +68,28 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(damageRecoveryTime);
         canTakeDamage = true;
     }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxNumberOfHeartContainers()
+    {
+        return maximumNumberOfHeartContainers;
+    }
+
+    public void IncreaseMaxHealthByTwo()
+    {
+        maxPlayerHealth += 2;
+        SetMaximumNumberOfHeartContainers();
+    }
+
+    
 
 }

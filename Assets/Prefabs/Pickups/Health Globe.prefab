@@ -10,14 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7520395110531894437}
   - component: {fileID: 5261749169895858695}
-  - component: {fileID: 9114867014654270351}
   - component: {fileID: 3883500403272086251}
   - component: {fileID: 932401128958318352}
   - component: {fileID: 4744283909447458715}
   - component: {fileID: 6325848199603390048}
-  - component: {fileID: 7683656163341566225}
   m_Layer: 0
-  m_Name: 'Gold Coin '
+  m_Name: Health Globe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 7c9203f6ad46e4d4bb001678a3608eb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -346161102, guid: 8c7c7702f0e77fe48a47eb6c1d12e64f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88820ace98e54d444805ef0cb238ddf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,27 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &9114867014654270351
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378358530459335328}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d67f784d5c68d0440a6bed6dc306bd25, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &3883500403272086251
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7aa19b9048b3a4bafc7123c12b4678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpType: 0
-  healthGlobeHealAmount: 0
+  pickUpType: 2
+  healthGlobeHealAmount: 1
   pickupDistance: 5
   moveSpeedModifier: 8
 --- !u!114 &6325848199603390048
@@ -228,15 +205,3 @@ MonoBehaviour:
     m_RotationOrder: 4
   heightY: 3
   shadowOfProjectile: {fileID: 1095997368595286303, guid: 03d84f93bf2a86b41a6366be63e445e8, type: 3}
---- !u!114 &7683656163341566225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378358530459335328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426e792513eceb64ab54c1130257ca34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

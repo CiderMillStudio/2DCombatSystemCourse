@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class PickupItemAnimCurveFling : MonoBehaviour
@@ -23,7 +22,7 @@ public class PickupItemAnimCurveFling : MonoBehaviour
     private IEnumerator ProjectileCurveRoutine(Vector3 startPosition, Vector3 endPosition)
     {
         float timePassed = 0f;
-        GameObject shadowInstance = Instantiate(shadowOfProjectile, transform.position, Quaternion.identity);
+        GameObject shadowInstance = Instantiate(shadowOfProjectile, transform.position, Quaternion.identity, transform);
 
 
         while (timePassed < duration)
@@ -42,8 +41,12 @@ public class PickupItemAnimCurveFling : MonoBehaviour
 
             yield return null;
         }
-        
-        Destroy(shadowInstance);
+    
+    }
+
+    public float GetPickupDuration()
+    {
+        return duration;
     }
 
 }

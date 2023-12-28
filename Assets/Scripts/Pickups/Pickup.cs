@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour //This class is attached to items that are defined as "pickups" like coins, heart containers, etc...
 {
+    private enum PickUpType
+    {
+        GoldCoin,
+        StaminaGlobe,
+        HealthGlobe,
+    }
+
+    [SerializeField] private PickUpType pickUpType;
+    [SerializeField] int healthGlobeHealAmount;
     
     [SerializeField] float pickupDistance = 5f; //how close the item needs to be to the player before it automatically starts traveling toward the player, like a magnet.
     
@@ -14,8 +23,10 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
 
     Rigidbody2D rb;
 
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        
     }
     
     private void Update() {
@@ -39,7 +50,30 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            PickupTypeControl();
             Destroy(gameObject);
+        }
+    }
+    
+
+    void PickupTypeControl()
+    {
+        switch (pickUpType)
+        {
+            case PickUpType.GoldCoin:
+            //do gold coin stuff
+            break;
+
+            case PickUpType.HealthGlobe:
+            PlayerHealth.Instance.HealPlayer(healthGlobeHealAmount);
+            break;
+
+            case PickUpType.StaminaGlobe:
+            //do staminaGlobe stuff
+            break;
+        
+            default:
+            break;
         }
     }
 }
