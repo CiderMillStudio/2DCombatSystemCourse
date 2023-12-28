@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pickup : MonoBehaviour //This class is attached to items that are defined as "pickups" like coins, heart containers, etc...
+{
+    
+    [SerializeField] float pickupDistance = 5f; //how close the item needs to be to the player before it automatically starts traveling toward the player, like a magnet.
+    
+    [SerializeField] float moveSpeedModifier = 3f;
+    float moveSpeed = 0f;
+
+    Vector3 moveDirection;
+
+    Rigidbody2D rb;
+
+    private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    
+    private void Update() {
+        Vector3 playerPos = PlayerController.Instance.transform.position;
+
+        if (Vector3.Distance(transform.position, playerPos) < pickupDistance)
+        {
+            moveDirection = (playerPos - transform.position).normalized;
+            moveSpeed += 0.1f * moveSpeedModifier;
+        }
+        else
+        {
+            moveDirection = Vector3.zero;
+            moveSpeed = 0;
+        }
+    }
+
+    private void FixedUpdate() {
+        rb.velocity = moveDirection * moveSpeed * Time.deltaTime;
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            Destroy(gameObject);
+        }
+    }
+}
