@@ -14,11 +14,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
     [SerializeField] int currentHealth = 6;
     Knockback knockback;
     Flash flash;
+    HeartContainterController heartContainerController;
 
     private bool canTakeDamage = true;
 
     protected override void Awake() {
         base.Awake();
+        heartContainerController = FindObjectOfType<HeartContainterController>();
         SetMaximumNumberOfHeartContainers();
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
@@ -59,8 +61,10 @@ public class PlayerHealth : Singleton<PlayerHealth>
             canTakeDamage = false;
             currentHealth -= damageAmount;
             ScreenShakeManager.Instance.ShakeScreen();
+            heartContainerController.MiniRefreshHeartContainers();
             StartCoroutine(flash.FlashRoutine());
             StartCoroutine(DamageRecoveryRoutine());
+
     }
 
     IEnumerator DamageRecoveryRoutine()
@@ -71,7 +75,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     public void HealPlayer(int healAmount)
     {
-        currentHealth += healAmount;
+            currentHealth += healAmount;
+            if (currentHealth >= maxPlayerHealth)
+            {
+                currentHealth = maxPlayerHealth;
+            }
+
+            heartContainerController.MiniRefreshHeartContainers();
     }
 
     public int GetCurrentHealth()

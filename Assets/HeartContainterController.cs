@@ -23,7 +23,7 @@ public class HeartContainterController : MonoBehaviour
         RefreshHeartContainers();
     }
 
-    public void RefreshHeartContainers()
+    void RefreshHeartContainers() //call this whenever you alter the player's health
     {
         RefreshNumberOfMaxHearts();
         RefreshCurrentHealth();
@@ -31,6 +31,14 @@ public class HeartContainterController : MonoBehaviour
         DeactivateLockedHeartContainers();
         SetAllActiveHeartContainersToEmpty();
         SyncHeartContainersToCurrentHealth();
+    }
+
+    public void MiniRefreshHeartContainers()
+    {
+        RefreshCurrentHealth();
+        // SetAllActiveHeartContainersToEmpty();
+        SyncHeartContainersToCurrentHealth();
+
     }
 
     void RefreshNumberOfMaxHearts()
@@ -66,7 +74,6 @@ public class HeartContainterController : MonoBehaviour
     {
         foreach (HeartImage i in heartImages)
         {
-            Debug.Log(i);
             i.SetHeartSprite(heartEmpty);
         }
     }
@@ -75,19 +82,22 @@ public class HeartContainterController : MonoBehaviour
     {
 
         int mockCurrentHealth = currentHealth;
-        int sillyNum = currentHealth/2;
-        for (int i = 0; i <= sillyNum; i++)
+        for (int i = 0; i <= heartImages.Count-1; i++)
         {
             HeartImage currentHeartContainer = heartImages[i];
-            Debug.Log(currentHeartContainer);
             if (mockCurrentHealth - 2 >= 0)
             {
                 currentHeartContainer.SetHeartSprite(heartFull);
                 mockCurrentHealth -= 2;
             }
-            else
+            else if (mockCurrentHealth - 1 >= 0)
             {
                 currentHeartContainer.SetHeartSprite(heartHalf);
+                mockCurrentHealth--;
+            }
+            else
+            {
+                currentHeartContainer.SetHeartSprite(heartEmpty);
             }
 
         }

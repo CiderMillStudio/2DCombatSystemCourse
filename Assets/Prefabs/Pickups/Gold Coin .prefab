@@ -188,7 +188,7 @@ MonoBehaviour:
   pickUpType: 0
   healthGlobeHealAmount: 0
   pickupDistance: 5
-  moveSpeedModifier: 8
+  moveSpeedModifier: 12
 --- !u!114 &6325848199603390048
 MonoBehaviour:
   m_ObjectHideFlags: 0
