@@ -14,6 +14,7 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
     }
 
     [SerializeField] private PickUpType pickUpType;
+    [SerializeField] int goldCoinValue = 1;
     [SerializeField] int healthGlobeHealAmount = 1;
     [SerializeField] int staminaGlobeRecoveryAmount = 1;
     
@@ -67,7 +68,7 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
         switch (pickUpType)
         {
             case PickUpType.GoldCoin:
-            //do gold coin stuff
+            EconomyManager.Instance.UpdateCoinAmount(goldCoinValue);
             break;
 
             case PickUpType.HealthGlobe:
