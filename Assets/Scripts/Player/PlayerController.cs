@@ -107,12 +107,17 @@ public class PlayerController : Singleton<PlayerController>
 
     void Dash()
     {
-        if (!dashIsInCD)
+        if (!dashIsInCD && PlayerStamina.Instance.GetCanPlayerUseStamina())
         {
+            PlayerStamina.Instance.UseStamina(1);
             dashIsInCD = true;
             playerMoveSpeed *= dashSpeedMultiplier;
             trailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
+        }
+        else if (!PlayerStamina.Instance.GetCanPlayerUseStamina())
+        {
+            Debug.Log("Not Enough Stamina!");
         }
         
     }

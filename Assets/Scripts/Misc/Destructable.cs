@@ -13,8 +13,7 @@ public class Destructable : MonoBehaviour
         pickupSpawner = GetComponent<PickupSpawner>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<DamageSource>() || 
-        other.gameObject.GetComponent<Projectile>())
+        if (other.gameObject.GetComponent<DamageSource>() || (other.gameObject.GetComponent<Projectile>() && !other.gameObject.GetComponentInParent<Projectile>().isEnemyProjectile))
         {
             pickupSpawner.DropItems();
             Instantiate(destroyVFX, transform.position, Quaternion.identity);

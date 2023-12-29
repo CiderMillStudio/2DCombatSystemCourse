@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] ParticleSystem HitEnemyVFX;
     [SerializeField] ParticleSystem HitOtherVFX;
     [SerializeField] float projectileSpeed =5f;
-    [SerializeField] bool isEnemyProjectile = false;
+    public bool isEnemyProjectile = false;
     
     [SerializeField] private float projectileRange = 10f;
 
@@ -59,6 +59,12 @@ public class Projectile : MonoBehaviour
             ProjectileHitEnemy(gameObject.transform.position);
         }
         else if (!other.isTrigger && indestructible)
+        {
+            Destroy(gameObject);
+            ProjectileHitOther(gameObject.transform.position);
+        }
+
+        else if (other.gameObject.GetComponent<Destructable>() && isEnemyProjectile)
         {
             Destroy(gameObject);
             ProjectileHitOther(gameObject.transform.position);

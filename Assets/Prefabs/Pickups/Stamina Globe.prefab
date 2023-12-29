@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpType: 1
-  healthGlobeHealAmount: 0
+  healthGlobeHealAmount: 1
+  staminaGlobeRecoveryAmount: 1
   pickupDistance: 5
   moveSpeedModifier: 12
 --- !u!114 &6325848199603390048

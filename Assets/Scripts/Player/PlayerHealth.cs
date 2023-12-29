@@ -11,7 +11,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     [SerializeField] float damageRecoveryTime = 0.2f;
 
     int maximumNumberOfHeartContainers; // i.e. Max Health/2 (one health is a half heart)
-    [SerializeField] int currentHealth = 6;
+    int currentHealth;
     Knockback knockback;
     Flash flash;
     HeartContainterController heartContainerController;
@@ -24,7 +24,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         SetMaximumNumberOfHeartContainers();
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
-        //currentHealth = maxPlayerHealth;
+        currentHealth = maxPlayerHealth;
     }
 
     private void Start() {

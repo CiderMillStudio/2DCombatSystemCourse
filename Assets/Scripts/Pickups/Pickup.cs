@@ -9,10 +9,13 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
         GoldCoin,
         StaminaGlobe,
         HealthGlobe,
+
+        GoldenHealthGlobe,
     }
 
     [SerializeField] private PickUpType pickUpType;
-    [SerializeField] int healthGlobeHealAmount;
+    [SerializeField] int healthGlobeHealAmount = 1;
+    [SerializeField] int staminaGlobeRecoveryAmount = 1;
     
     [SerializeField] float pickupDistance = 5f; //how close the item needs to be to the player before it automatically starts traveling toward the player, like a magnet.
     
@@ -23,9 +26,12 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
 
     Rigidbody2D rb;
 
+    HeartContainterController heartContainterController;
+
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        heartContainterController = FindObjectOfType<HeartContainterController>();
         
     }
     
@@ -69,7 +75,11 @@ public class Pickup : MonoBehaviour //This class is attached to items that are d
             break;
 
             case PickUpType.StaminaGlobe:
-            //do staminaGlobe stuff
+            PlayerStamina.Instance.GainStamina(staminaGlobeRecoveryAmount);
+            break;
+
+            case PickUpType.GoldenHealthGlobe:
+            heartContainterController.UnlockNextHeartContainer();
             break;
         
             default:

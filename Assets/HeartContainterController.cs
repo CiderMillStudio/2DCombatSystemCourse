@@ -35,6 +35,7 @@ public class HeartContainterController : MonoBehaviour
 
     public void MiniRefreshHeartContainers()
     {
+        RefreshNumberOfMaxHearts();
         RefreshCurrentHealth();
         // SetAllActiveHeartContainersToEmpty();
         SyncHeartContainersToCurrentHealth();
@@ -105,12 +106,16 @@ public class HeartContainterController : MonoBehaviour
 
     public void UnlockNextHeartContainer()
     {
+        if (numberOfLockedHeartContainers > 0)
+        {
         heartImages.Add(transform.GetChild(transform.childCount - (numberOfLockedHeartContainers)).GetComponent<HeartImage>());
         heartImages[transform.childCount - (numberOfLockedHeartContainers)].gameObject.SetActive(true);
         PlayerHealth.Instance.IncreaseMaxHealthByTwo();
         RefreshNumberOfMaxHearts();
         RefreshCurrentHealth();
         numberOfLockedHeartContainers = transform.childCount - numberOfActiveHeartContainers;
+        }
+        else {return;}
     }
 
 
