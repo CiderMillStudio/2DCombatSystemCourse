@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4004001273870055376}
   - component: {fileID: 8271809436885373346}
   - component: {fileID: 6982652151265702937}
+  - component: {fileID: 5413239440404807891}
   m_Layer: 0
   m_Name: GrapeEnemy
   m_TagString: Enemy
@@ -268,6 +269,23 @@ MonoBehaviour:
   grapeProjectilePrefab: {fileID: 9011679992446399742, guid: 61ff1e80e92040b4488dce6cad1bd1c3, type: 3}
   grapeBulletDamage: 2
   splatteredGrapeDamage: 1
+--- !u!114 &5413239440404807891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312337155596032722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dda7103b4ab58b4f94e9b0f3701356e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCoinPrefab: {fileID: 5378358530459335328, guid: 6e3478fdd53611747b99c577585cd5ea, type: 3}
+  healthGlobe: {fileID: 5378358530459335328, guid: f40dc32402927444f882d4225ff58072, type: 3}
+  largeHealthGlobe: {fileID: 3557364476712757634, guid: b34b8d937f3cc1946ab2c8d34dd9e531, type: 3}
+  goldenHealthGlobe: {fileID: 5378358530459335328, guid: 44e3b707c57ba86468bc9093f71a79b3, type: 3}
+  staminaGlobe: {fileID: 5378358530459335328, guid: 3808f8825173d744f82496d43ba65788, type: 3}
 --- !u!1 &7087141948547956773
 GameObject:
   m_ObjectHideFlags: 0

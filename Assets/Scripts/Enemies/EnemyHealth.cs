@@ -43,6 +43,8 @@ IEnumerator DetectDeath(float deathDelayTime)
     {
         
         ParticleSystem splatInstance = Instantiate(splatSlime, gameObject.transform.position, Quaternion.identity);
+        GetComponent<PickupSpawner>().DropItems();
+        GetComponent<PickupSpawner>().DropItems();
         Destroy(gameObject);
         yield return new WaitForSeconds(splatTime);
         Destroy(splatInstance);

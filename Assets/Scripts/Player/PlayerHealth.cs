@@ -64,6 +64,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
             heartContainerController.MiniRefreshHeartContainers();
             StartCoroutine(flash.FlashRoutine());
             StartCoroutine(DamageRecoveryRoutine());
+            CheckIfPlayerDeath();
 
     }
 
@@ -98,6 +99,15 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         maxPlayerHealth += 2;
         SetMaximumNumberOfHeartContainers();
+    }
+
+    void CheckIfPlayerDeath()
+    {
+        if (currentHealth <= 0)
+        {
+           Debug.Log("Player Death"); 
+           currentHealth = 0;
+        }
     }
 
     
