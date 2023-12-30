@@ -252,13 +252,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b5fef80004088458fd5f647c5e39b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamChangeDirectionTime: 2
-  thresholdAttackDistance: 5
-  thresholdHuntingRadius: 15
+  roamChangeDirectionTime: 4
+  thresholdAttackDistance: 7
+  thresholdHuntingRadius: 16
   enemyType: {fileID: 5272922451726969977}
   attackCooldownTime: 0.5
   StopMovingWhileAttacking: 0
-  attackingMoveSpeed: 2.5
+  attackingMoveSpeed: 5
   roamingMoveSpeed: 1
 --- !u!114 &4708924726560885719
 MonoBehaviour:

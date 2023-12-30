@@ -34,7 +34,10 @@ public class Sword : MonoBehaviour, IWeapon
     }
 
     private void Update() {
-        MouseFollowWithOffset();
+        if (PlayerController.Instance.PlayerIsAlive)
+        { 
+            MouseFollowWithOffset();
+        }
     }
 
     public WeaponInfo GetWeaponInfo() {

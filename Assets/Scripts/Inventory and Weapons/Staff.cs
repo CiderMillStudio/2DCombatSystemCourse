@@ -31,7 +31,10 @@ public class Staff : MonoBehaviour, IWeapon //requires the public Attack method 
     }
 
     private void Update() {
-        MouseFollowWithOffset();
+        if (PlayerController.Instance.PlayerIsAlive)
+        {
+            MouseFollowWithOffset();
+        }
     }
 
     public WeaponInfo GetWeaponInfo() {

@@ -17,13 +17,13 @@ public class PlayerStamina : Singleton<PlayerStamina>
 
     protected override void Awake() {
         base.Awake();
-        currentStamina = maxPlayerStamina;
         staminaContainerController = FindObjectOfType<StaminaContainerController>();
 
     }
 
     private void Start() {
         timer = 0;
+        RestorePlayerStamina();
     }
 
     private void Update() {
@@ -41,7 +41,7 @@ public class PlayerStamina : Singleton<PlayerStamina>
             canUseStamina = true;
         }
 
-        if (timer < staminaRecoveryTime)
+        if (timer < staminaRecoveryTime && PlayerController.Instance.PlayerIsAlive)
         {
             timer += Time.deltaTime;
         }
@@ -53,7 +53,6 @@ public class PlayerStamina : Singleton<PlayerStamina>
             {
                 currentStamina = maxPlayerStamina;
             }
-            Debug.Log("currentStamina is " + currentStamina);
         }
 
 
@@ -64,7 +63,6 @@ public class PlayerStamina : Singleton<PlayerStamina>
         if (currentStamina - howMuchStamina >= 0)
         {
             currentStamina -= howMuchStamina;
-            Debug.Log(howMuchStamina + " stamina used. currentStamina is " + currentStamina);
             staminaContainerController.MiniRefreshStaminaContainers();
         }
     }
@@ -81,7 +79,6 @@ public class PlayerStamina : Singleton<PlayerStamina>
         {
             currentStamina = maxPlayerStamina;
         }   
-        Debug.Log("Stamina Gained. currenSTamina is now" + currentStamina);
         staminaContainerController.MiniRefreshStaminaContainers();
     }
 
@@ -93,6 +90,13 @@ public class PlayerStamina : Singleton<PlayerStamina>
     public int GetCurrentStamina()
     {
         return currentStamina;
+    }
+
+
+    public void RestorePlayerStamina()
+    {
+        currentStamina = maxPlayerStamina;
+        staminaContainerController.MiniRefreshStaminaContainers();
     }
 
     

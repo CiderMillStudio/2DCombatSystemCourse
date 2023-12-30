@@ -67,6 +67,10 @@ public class MagicLaser : MonoBehaviour
             {
                 ParticleSystem LaserHitsIndestructibleTileVFXInstance = Instantiate(LaserHitsIndestructibleVFX, PoofPoint);
             }
+            else if (other.gameObject.tag == "LargeObject")
+            {
+                ParticleSystem LaserHitsIndestructibleTileVFXInstance = Instantiate(LaserHitsIndestructibleVFX, PoofPoint);
+            }
             else
             {
                 ParticleSystem LaserHitsIndestructibleParticleVFXInstance = Instantiate(LaserHitsIndestructibleVFX, other.transform.position, other.transform.rotation);

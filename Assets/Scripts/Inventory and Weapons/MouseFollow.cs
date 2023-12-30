@@ -7,7 +7,10 @@ public class MouseFollow : MonoBehaviour
 {
     void Update()
     {
-        FaceMouse();
+        if (PlayerController.Instance.PlayerIsAlive) 
+        {
+            FaceMouse();
+        }
     }
 
     void FaceMouse()

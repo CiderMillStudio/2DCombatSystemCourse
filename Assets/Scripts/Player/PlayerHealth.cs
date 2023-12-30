@@ -15,6 +15,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     Knockback knockback;
     Flash flash;
     HeartContainterController heartContainerController;
+    PlayerDeath playerDeath;
 
     private bool canTakeDamage = true;
 
@@ -24,11 +25,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
         SetMaximumNumberOfHeartContainers();
         flash = GetComponent<Flash>();
         knockback = GetComponent<Knockback>();
-        currentHealth = maxPlayerHealth;
+        playerDeath = GetComponent<PlayerDeath>();
     }
 
     private void Start() {
-        
+        RestorePlayerHealth();
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -55,7 +56,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
     public void TakeDamage(int damageAmount, Transform hitTransform)
     {
-            if (!canTakeDamage) { return; }
+            if (!canTakeDamage || !PlayerController.Instance.PlayerIsAlive) { return; }
             
             knockback.GetKnockedBack(hitTransform, knockBackThrustAmount);
             canTakeDamage = false;
@@ -65,6 +66,8 @@ public class PlayerHealth : Singleton<PlayerHealth>
             StartCoroutine(flash.FlashRoutine());
             StartCoroutine(DamageRecoveryRoutine());
             CheckIfPlayerDeath();
+
+
 
     }
 
@@ -103,11 +106,17 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     void CheckIfPlayerDeath()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && PlayerController.Instance.PlayerIsAlive)
         {
-           Debug.Log("Player Death"); 
-           currentHealth = 0;
+            currentHealth = 0;
+            StartCoroutine(playerDeath.PlayerDeathEvent());
         }
+    }
+
+    public void RestorePlayerHealth() //you can call this after a respawn.
+    {
+        currentHealth = maxPlayerHealth;
+        heartContainerController.MiniRefreshHeartContainers();
     }
 
     

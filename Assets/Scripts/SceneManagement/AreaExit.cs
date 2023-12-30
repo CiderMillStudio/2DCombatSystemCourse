@@ -7,6 +7,7 @@ public class AreaExit : MonoBehaviour
 {
 
     [SerializeField] string sceneToLoad;
+    [Tooltip("This is the name of the ENTRANCE which you'll be teleported TO.")]
     [SerializeField] string sceneTransitionName;
 
     [SerializeField] float loadSceneDelay = 1f;

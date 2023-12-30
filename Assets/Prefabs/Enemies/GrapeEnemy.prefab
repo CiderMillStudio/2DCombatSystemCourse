@@ -192,11 +192,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roamChangeDirectionTime: 2
   thresholdAttackDistance: 5
-  thresholdHuntingRadius: 8
+  thresholdHuntingRadius: 20
   enemyType: {fileID: 6982652151265702937}
   attackCooldownTime: 1
   StopMovingWhileAttacking: 1
-  attackingMoveSpeed: 3
+  attackingMoveSpeed: 4
   roamingMoveSpeed: 1
 --- !u!114 &1520465678695150560
 MonoBehaviour:

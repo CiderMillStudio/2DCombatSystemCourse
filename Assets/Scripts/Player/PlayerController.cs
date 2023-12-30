@@ -17,6 +17,7 @@ public class PlayerController : Singleton<PlayerController>
     PlayerControls playerControls; //this refers to the script that automaticaly comes with player input map
 
     SpriteRenderer playerSpriteRenderer;
+    public bool PlayerIsAlive = true;
     [SerializeField] float playerMoveSpeed = 1f;
     [SerializeField] TrailRenderer trailRenderer;
     bool facingLeft = false;
@@ -29,6 +30,7 @@ public class PlayerController : Singleton<PlayerController>
     Knockback knockback;
 
     float startingMoveSpeed;
+
 
     protected override void Awake() //Since the "Base Awake()" function is from our Singleton.cs class, and because this class inherits from Singleton.cs, we need to call our local Awake() function as "protect override".
     {
@@ -44,12 +46,21 @@ public class PlayerController : Singleton<PlayerController>
 
     void Start()
     {
+        CameraController.Instance.SetPlayerCameraFollow();
         playerControls.Combat.Dash.performed += _ => Dash(); //this is called subscribing
         startingMoveSpeed = playerMoveSpeed;
+        PlayerIsAlive = true;
+        ActiveInventory.Instance.ActivateInventoryToItemZero();
+        
     }
      void OnEnable() //you need this for the new input system
     {
         playerControls.Enable();
+    }
+
+    void OnDisable() //this functions whenever the player instance is destroyed!
+    {
+        playerControls.Disable();
     }
     
     void Update()
@@ -69,11 +80,9 @@ public class PlayerController : Singleton<PlayerController>
 
     void FixedUpdate() //Fixed update is good for physics, while update is good for player input
     {
-        if (!knockback.GettingKnockedBack) 
+        if (!knockback.GettingKnockedBack && PlayerIsAlive) 
         {
             Move();
-
-
         }
     }
 
@@ -107,7 +116,7 @@ public class PlayerController : Singleton<PlayerController>
 
     void Dash()
     {
-        if (!dashIsInCD && PlayerStamina.Instance.GetCanPlayerUseStamina())
+        if (!dashIsInCD && PlayerStamina.Instance.GetCanPlayerUseStamina() && PlayerIsAlive)
         {
             PlayerStamina.Instance.UseStamina(1);
             dashIsInCD = true;

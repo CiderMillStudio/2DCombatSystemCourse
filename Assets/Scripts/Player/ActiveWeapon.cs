@@ -69,10 +69,11 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     void Attack() {
         
-        if (attackButtonDown && !isAttacking && CurrentActiveWeapon) {
-        AttackCooldown();
-        (CurrentActiveWeapon as IWeapon).Attack();
-        
+        if (attackButtonDown && !isAttacking && 
+        CurrentActiveWeapon && PlayerController.Instance.PlayerIsAlive) 
+        {
+            AttackCooldown();
+            (CurrentActiveWeapon as IWeapon).Attack();
         }
 
     }
